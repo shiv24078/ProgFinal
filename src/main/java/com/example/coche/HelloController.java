@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class HelloController  {
 
     @FXML
     private Button cliente;
@@ -17,7 +17,3 @@ public class HelloController implements Initializable {
     private Button registrar;
 }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-    }
-}
