@@ -45,8 +45,17 @@ public class DatabaseHelper {
                 "clave VARCHAR(255) NOT NULL" +
                 ")";
         String createReservaTableSQL = "CREATE TABLE IF NOT EXISTS reserva (" +
-                "id_reserva BIGINT AUTO_INCREMENT PRIMARY KEY" +
+                "id_reserva BIGINT AUTO_INCREMENT PRIMARY KEY," +
+                "id_cliente BIGINT NOT NULL," +
+                "id_vehiculo BIGINT NOT NULL," +
+                "id_zona_alquiler BIGINT NOT NULL," +
+                "fecha_inicio DATE NOT NULL," +
+                "fecha_fin DATE NOT NULL," +
+                "FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)," +
+                "FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo)," +
+                "FOREIGN KEY (id_zona_alquiler) REFERENCES zona_alquiler(id_zona_alquiler)" +
                 ")";
+
 
 
 
