@@ -55,6 +55,21 @@ public class DatabaseHelper {
                 "FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo)," +
                 "FOREIGN KEY (id_zona_alquiler) REFERENCES zona_alquiler(id_zona_alquiler)" +
                 ")";
+        String insertVehicloTableSQL = "INSERT INTO vehiculo (nombre_modelo, matricula, marca, precio_semana, capacidad_sitio) " +
+                "VALUES ('Audi A3', '1234ABC', 'Audi', 100, 5), " +
+                "('BMW X5', '5678DEF', 'BMW', 150, 7)," +
+                " ('Ford Fiesta', '9012GHI', 'Ford', 50, 4)," +
+                "('Toyota Corolla', '3456JKL', 'Toyota', 80, 5)," +
+                " ('Mercedes-Benz C-Class', '7890MNO', 'Mercedes-Ben', 120, 5), " +
+                "('Hyundai Tucson', '1234PQR', 'Hyundai', 90, 5)," +
+                " ('Volvo XC90', '5678STU', 'Volvo', 170, 7)," +
+                " ('Nissan Rogue', '9012VWX', 'Nissan', 100, 5)," +
+                "('Jeep Wrangler', '7890BCD', 'Jeep', 150, 4)," +
+                "('Kia Sorento', '1234EFG', 'Kia', 110, 5)" +
+                ";";
+
+
+
 
 
 
@@ -66,6 +81,7 @@ public class DatabaseHelper {
             statement.execute(createZona_AlquilerTableSQL);
             statement.execute(createAdminTableSQL);
             statement.execute(createReservaTableSQL);
+            statement.execute(insertVehicloTableSQL);
 
         }
     }
