@@ -27,11 +27,17 @@ public class DatabaseHelper {
         String createVehiculoTableSQL = "CREATE TABLE IF NOT EXISTS vehiculo (" +
                 "id_vehiculo BIGINT AUTO_INCREMENT PRIMARY KEY," +
                 "nombre_modelo VARCHAR(255) NOT NULL," +
-                "matricula VARCHAR(255) NOT NULL," +
+                "matricula VARCHAR(255) NOT NULL UNIQUE," +
                 "marca VARCHAR(255) NOT NULL," +
                 "precio_semana BIGINT NOT NULL," +
-                "capacidad_sitio BIGINT NOT NULL" +
+                "capacidad_sitio BIGINT NOT NULL," +
+                "FOREIGN KEY (id_tipo_vehiculo) REFERENCES tipo_vehiculo(id_tipo_vehiculo)" +
+
                 ")";
+        String updateVehiculoTableSQL = "ALTER TABLE vehiculo " +
+                "ADD COLUMN id_tipo BIGINT," +
+                "ADD FOREIGN KEY (id_tipo) REFERENCES tipo_vehiculo(id_tipo)";
+
         String createZona_AlquilerTableSQL = "CREATE TABLE IF NOT EXISTS zona_alquiler (" +
                 "id_zona_alquiler BIGINT AUTO_INCREMENT PRIMARY KEY," +
                 "dirrecion VARCHAR(255) NOT NULL," +
@@ -55,18 +61,15 @@ public class DatabaseHelper {
                 "FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo)," +
                 "FOREIGN KEY (id_zona_alquiler) REFERENCES zona_alquiler(id_zona_alquiler)" +
                 ")";
-        String insertVehicloTableSQL = "INSERT INTO vehiculo (nombre_modelo, matricula, marca, precio_semana, capacidad_sitio) " +
-                "VALUES ('Audi A3', '1234ABC', 'Audi', 100, 5), " +
-                "('BMW X5', '5678DEF', 'BMW', 150, 7)," +
-                " ('Ford Fiesta', '9012GHI', 'Ford', 50, 4)," +
-                "('Toyota Corolla', '3456JKL', 'Toyota', 80, 5)," +
-                " ('Mercedes-Benz C-Class', '7890MNO', 'Mercedes-Ben', 120, 5), " +
-                "('Hyundai Tucson', '1234PQR', 'Hyundai', 90, 5)," +
-                " ('Volvo XC90', '5678STU', 'Volvo', 170, 7)," +
-                " ('Nissan Rogue', '9012VWX', 'Nissan', 100, 5)," +
-                "('Jeep Wrangler', '7890BCD', 'Jeep', 150, 4)," +
-                "('Kia Sorento', '1234EFG', 'Kia', 110, 5)" +
-                ";";
+
+        String createTipoVehiculoTableSQL = "CREATE TABLE IF NOT EXISTS tipo_vehiculo (" +
+                "id_tipo BIGINT AUTO_INCREMENT PRIMARY KEY," +
+                "tipo VARCHAR(255) NOT NULL" +
+                ")";
+
+
+
+
 
 
 
@@ -78,11 +81,45 @@ public class DatabaseHelper {
              Statement statement = connection.createStatement()) {
             statement.execute(createClienteTableSQL);
             statement.execute(createVehiculoTableSQL);
+            statement.execute(updateVehiculoTableSQL);
+
             statement.execute(createZona_AlquilerTableSQL);
             statement.execute(createAdminTableSQL);
             statement.execute(createReservaTableSQL);
-            statement.execute(insertVehicloTableSQL);
+            statement.execute(createTipoVehiculoTableSQL);
 
         }
     }
+    public void insertInfo() throws SQLException, ClassNotFoundException {
+        String insertVehicloTableSQL = "INSERT INTO vehiculo (nombre_modelo, matricula, marca, precio_semana, capacidad_sitio, id_tipo_vehiculo) " +
+                "VALUES ('Audi A3', '1234ABC', 'Audi', 100, 5, 1), " +
+                "('BMW X5', '5678DEF', 'BMW', 150, 7, 2)," +
+                " ('Ford Fiesta', '9012GHI', 'Ford', 50, 4, 1)," +
+                "('Toyota Corolla', '3456JKL', 'Toyota', 80, 5, 3)," +
+                " ('Mercedes-Benz C-Class', '7890MNO', 'Mercedes-Benz', 120, 5, 1), " +
+                "('Hyundai Tucson', '1234PQR', 'Hyundai', 90, 5, 2)," +
+                " ('Volvo XC90', '5678STU', 'Volvo', 170, 7, 2)," +
+                " ('Nissan Rogue', '9012VWX', 'Nissan', 100, 5, 2)," +
+                "('Jeep Wrangler', '7890BCD', 'Jeep', 150, 4, 4)," +
+                "('Kia Sorento', '1234EFG', 'Kia', 110, 5, 2)" +
+                ";";
+        String insertTipoVehiculoTableSQL = "INSERT INTO tipo_vehiculo (tipo) " +
+                "VALUES ('Compacto'), " +
+                "('SUV'), " +
+                "('Sedán'), " +
+                "('Todoterreno');";
+
+
+        try (Connection connection = connect();
+             Statement statement = connection.createStatement()) {
+            statement.execute(insertVehicloTableSQL);
+            statement.execute(insertTipoVehiculoTableSQL);
+
+        } catch (SQLException e) {
+            // The exception can be caused by the UNIQUE constraint on the "matricula" column.
+            // Here you can handle the exception, for example, log it:
+            System.out.println("Un coche con esta matricula ya existe en la base de datos.");
+        }
+    }
+
 }

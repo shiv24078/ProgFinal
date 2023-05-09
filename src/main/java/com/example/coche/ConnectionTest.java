@@ -15,6 +15,7 @@ public class ConnectionTest {
 
             System.out.println("Conexión ha sido establecida");
             dbHelper.createTables();
+            dbHelper.insertInfo();
             System.out.println("Tabla creada");
         } catch (Exception e) {
             e.printStackTrace();

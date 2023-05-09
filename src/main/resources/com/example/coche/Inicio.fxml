@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba2.Carga_Pantalla">
+   <children>
+      <Label layoutX="176.0" layoutY="106.0" prefHeight="25.0" prefWidth="60.0" text="Cliente">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="btnRegis" layoutX="169.0" layoutY="309.0" mnemonicParsing="false" onAction="#Regis" text="Registrarse" />
+      <Button fx:id="btnMenu" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" onAction="#Menu" text="Entrar" />
+      <TextField fx:id="txtCorreo" layoutX="132.0" layoutY="146.0" promptText="Correo electronico" />
+      <PasswordField fx:id="txtContraseña" layoutX="132.0" layoutY="206.0" promptText="Contraseña" />
+      <Button fx:id="btnSalir" layoutX="267.0" layoutY="32.0" mnemonicParsing="false" onAction="#Salir" text="X" textFill="#e30707">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+   </children>
+</Pane>

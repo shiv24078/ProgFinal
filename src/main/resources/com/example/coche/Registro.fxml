@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba2.Carga_Pantalla">
+   <children>
+      <Button layoutX="43.0" layoutY="260.0" mnemonicParsing="false" text="Registrar Datos" />
+      <Label layoutX="34.0" layoutY="58.0" text="Correo a registrar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="178.0" text="Contraseña a registrar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="18.0" layoutY="102.0" />
+      <PasswordField layoutX="19.0" layoutY="222.0" />
+      <Button fx:id="btnVolver" layoutX="66.0" layoutY="310.0" mnemonicParsing="false" onAction="#Volver" text="Volver" />
+   </children>
+</Pane>
