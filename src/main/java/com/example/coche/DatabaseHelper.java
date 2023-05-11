@@ -24,6 +24,11 @@ public class DatabaseHelper {
                 "correo VARCHAR(255) NOT NULL," +
                 "password VARCHAR(255) NOT NULL" +
                 ")";
+        String createTipoVehiculoTableSQL = "CREATE TABLE IF NOT EXISTS tipo_vehiculo (" +
+                "id_tipo_vehiculo BIGINT AUTO_INCREMENT PRIMARY KEY," +
+                "tipo VARCHAR(255) NOT NULL" +
+                ")";
+
         String createVehiculoTableSQL = "CREATE TABLE IF NOT EXISTS vehiculo (" +
                 "id_vehiculo BIGINT AUTO_INCREMENT PRIMARY KEY," +
                 "nombre_modelo VARCHAR(255) NOT NULL," +
@@ -31,25 +36,17 @@ public class DatabaseHelper {
                 "marca VARCHAR(255) NOT NULL," +
                 "precio_semana BIGINT NOT NULL," +
                 "capacidad_sitio BIGINT NOT NULL," +
+                "id_tipo_vehiculo BIGINT NOT NULL," +
                 "FOREIGN KEY (id_tipo_vehiculo) REFERENCES tipo_vehiculo(id_tipo_vehiculo)" +
-
                 ")";
-        String updateVehiculoTableSQL = "ALTER TABLE vehiculo " +
-                "ADD COLUMN id_tipo BIGINT," +
-                "ADD FOREIGN KEY (id_tipo) REFERENCES tipo_vehiculo(id_tipo)";
+
 
         String createZona_AlquilerTableSQL = "CREATE TABLE IF NOT EXISTS zona_alquiler (" +
                 "id_zona_alquiler BIGINT AUTO_INCREMENT PRIMARY KEY," +
                 "dirrecion VARCHAR(255) NOT NULL," +
                 "provincia VARCHAR(255) NOT NULL" +
                 ")";
-        String createAdminTableSQL = "CREATE TABLE IF NOT EXISTS admin (" +
-                "id_admin BIGINT AUTO_INCREMENT PRIMARY KEY," +
-                "nombre VARCHAR(255) NOT NULL," +
-                "apellido VARCHAR(255) NOT NULL," +
-                "correo VARCHAR(255) NOT NULL," +
-                "clave VARCHAR(255) NOT NULL" +
-                ")";
+
         String createReservaTableSQL = "CREATE TABLE IF NOT EXISTS reserva (" +
                 "id_reserva BIGINT AUTO_INCREMENT PRIMARY KEY," +
                 "id_cliente BIGINT NOT NULL," +
@@ -62,32 +59,13 @@ public class DatabaseHelper {
                 "FOREIGN KEY (id_zona_alquiler) REFERENCES zona_alquiler(id_zona_alquiler)" +
                 ")";
 
-        String createTipoVehiculoTableSQL = "CREATE TABLE IF NOT EXISTS tipo_vehiculo (" +
-                "id_tipo BIGINT AUTO_INCREMENT PRIMARY KEY," +
-                "tipo VARCHAR(255) NOT NULL" +
-                ")";
-
-
-
-
-
-
-
-
-
-
-
         try (Connection connection = connect();
              Statement statement = connection.createStatement()) {
             statement.execute(createClienteTableSQL);
-            statement.execute(createVehiculoTableSQL);
-            statement.execute(updateVehiculoTableSQL);
-
-            statement.execute(createZona_AlquilerTableSQL);
-            statement.execute(createAdminTableSQL);
-            statement.execute(createReservaTableSQL);
             statement.execute(createTipoVehiculoTableSQL);
-
+            statement.execute(createVehiculoTableSQL);
+            statement.execute(createZona_AlquilerTableSQL);
+            statement.execute(createReservaTableSQL);
         }
     }
     public void insertInfo() throws SQLException, ClassNotFoundException {
