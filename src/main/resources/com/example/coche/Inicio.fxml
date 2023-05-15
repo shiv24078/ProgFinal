@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coche.InicioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Inicio.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coche.InicioController">
+
    <children>
-      <Label layoutX="123.0" layoutY="107.0" prefHeight="25.0" prefWidth="60.0" text="Cliente">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnRegis" layoutX="116.0" layoutY="305.0" mnemonicParsing="false" onAction="#Regis" text="Registrarse" />
-      <Button fx:id="btnMenu" layoutX="130.0" layoutY="249.0" mnemonicParsing="false" onAction="#Menu" text="Entrar" />
-      <TextField fx:id="txtCorreo" layoutX="80.0" layoutY="147.0" promptText="Correo electronico" />
-      <PasswordField fx:id="txtContraseña" layoutX="80.0" layoutY="207.0" promptText="Contraseña" />
-      <Button fx:id="btnSalir" layoutX="267.0" layoutY="32.0" mnemonicParsing="false" onAction="#Salir" text="X" textFill="#e30707">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Label fx:id="errorLabel" layoutX="80.0" layoutY="350.0" text="" textFill="RED" />
+      <ImageView fitHeight="400.0" fitWidth="600.0">
+         <Image url="@image/redcar5.jpg" />
+      </ImageView>
+
+      <VBox alignment="CENTER" layoutX="200.0" layoutY="64.0" spacing="15">
+         <Label styleClass="title" text="Iniciar Sesión" />
+         <TextField fx:id="txtCorreo" promptText="Correo electronico" styleClass="input" />
+         <PasswordField fx:id="txtContraseña" promptText="Contraseña" styleClass="input" />
+         <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#Menu" styleClass="button" text="Entrar" />
+         <Button fx:id="btnRegis" mnemonicParsing="false" onAction="#Regis" styleClass="button" text="Registrarse" />
+         <Label fx:id="errorLabel" text="" textFill="BLACK" />
+         <Button fx:id="btnSalir" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Salir" prefHeight="20" prefWidth="30.0" styleClass="exit-button" text="Salir" textFill="#e30707">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Button>
+      </VBox>
+
    </children>
 </Pane>

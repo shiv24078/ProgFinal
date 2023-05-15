@@ -204,7 +204,4 @@ public class DatabaseHelper {
         }
         return provincias;
     }
-
-
-
 }

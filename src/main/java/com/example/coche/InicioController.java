@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 public class InicioController {
     private Stage stage;
-
     @FXML
     private TextField txtCorreo;
     @FXML
     private PasswordField txtContraseña;
     @FXML
     private Label errorLabel;
+    private DatabaseHelper databaseHelper = new DatabaseHelper();
+
 
     // Método para ir a registro
     @FXML
@@ -45,15 +46,25 @@ public class InicioController {
 
     // Método para ir a ZonaAlquiler
     @FXML
-    void Menu(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ZonaAlquiler.fxml"));
-        Parent root = loader.load();
-        ZonaAlquilerController controller = loader.getController();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+    void Menu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        String correo = txtCorreo.getText();
+        String password = txtContraseña.getText();
+
+        if (databaseHelper.checkLogin(correo, password)) {
+            // Login successful, navigate to the next page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ZonaAlquiler.fxml"));
+            Parent root = loader.load();
+            ZonaAlquilerController controller = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            // Login failed, show error message
+            errorLabel.setText("Error: verifique sus credenciales.");
+        }
     }
+
 
     // Método para cerrar la aplicación
     @FXML

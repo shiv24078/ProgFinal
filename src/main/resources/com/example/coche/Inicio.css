@@ -1,0 +1,38 @@
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.input {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+
+.button {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #007bff;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #0056b3;
+}
+
+.exit-button {
+    -fx-background-color: #ff0000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+}
+
+.exit-button:hover {
+    -fx-background-color: #b30000;
+}
+
