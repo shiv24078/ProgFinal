@@ -1,30 +1,25 @@
 package com.example.coche;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-
+import java.sql.SQLException;
 public class RegistroController {
-private InicioController controllerinicio;
-private Stage stage;
-@FXML
-private Label txtCorreo;
-
-
-//Metodo volver al inicio
-@FXML
-void Volver(ActionEvent event) {
-controllerinicio.show();
-stage.close();
-}
-
-//Metodo init para nombre etc
+    private InicioController controllerinicio;
+    private Stage stage;
+    @FXML
+    private Label txtCorreo;
+    @FXML
+    private TextField correoField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private Label confirmationLabel;
     public void init(String text, Stage stage, InicioController inicioController) {
         txtCorreo.setText(text);
         this.controllerinicio = inicioController;
@@ -32,22 +27,27 @@ stage.close();
     }
 
     @FXML
-    void Menu(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
-        Parent root = loader.load();
-        MenuController controller = loader.getController();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        controller.init(txtCorreo.getText(), stage, this);
-        stage.show();
-        this.stage.close();
-    }
-    public void setStage (Stage primaryStage){
-        stage = primaryStage;
+    void registerNewClient(ActionEvent event) {
+        String correo = correoField.getText();
+        String password = passwordField.getText();
+        try {
+            DatabaseHelper db = new DatabaseHelper();
+            if (correo.isEmpty() || password.isEmpty()) {
+                errorLabel.setText("Correo y contraseña son requeridos");
+                return;
+            }
+            if (db.checkIfEmailExists(correo)) {
+                errorLabel.setText("Este correo ya está registrado");
+                return;
+            }
+            Cliente newClient = new Cliente(correo, password);
+            db.addClient(newClient);
+            errorLabel.setText("");
+            confirmationLabel.setText("Registro exitoso");
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("An error occurred while registering a new client.");
+            e.printStackTrace();
+        }
     }
 
-    public void show () {
-        stage.show();
-    }
 }

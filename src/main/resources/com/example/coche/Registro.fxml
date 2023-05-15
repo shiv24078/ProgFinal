@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coche.RegistroController">
    <children>
-      <Button layoutX="43.0" layoutY="260.0" mnemonicParsing="false" onAction="#Menu" text="Registrar Datos" />
-      <Label layoutX="34.0" layoutY="58.0" text="Correo a registrar">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="20.0" layoutY="178.0" text="Contraseña a registrar">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField layoutX="18.0" layoutY="102.0" />
-      <PasswordField layoutX="19.0" layoutY="222.0" />
-      <Button fx:id="btnVolver" layoutX="66.0" layoutY="310.0" mnemonicParsing="false" onAction="#Volver" text="Volver" />
-      <Label fx:id="txtCorreo" layoutX="79.0" layoutY="14.0" text="Label" />
+      <VBox layoutX="18.0" layoutY="22.0" spacing="10">
+         <Label fx:id="txtCorreo" layoutX="79.0" layoutY="14.0" text="Correo a registrar">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <TextField fx:id="correoField" />
+         <Label text="Contraseña a registrar">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <PasswordField fx:id="passwordField" />
+         <HBox spacing="15">
+            <Button mnemonicParsing="false" onAction="#registerNewClient" text="Registrar Datos" />
+         </HBox>
+         <Label fx:id="errorLabel" text="" textFill="RED" />
+         <Label fx:id="confirmationLabel" text="" textFill="GREEN" />
+      </VBox>
    </children>
 </Pane>

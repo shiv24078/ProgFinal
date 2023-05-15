@@ -1,39 +1,32 @@
 package com.example.coche;
-
-
 public class Vehiculo {
-    private long idVehiculo;
-    private String nombreModelo;
+    private long id_vehiculo;
+    private String nombre_modelo;
     private String matricula;
     private String marca;
-    private long precioSemana;
-    private long capacidadSitio;
-
-    private long idTipo;
-
-    public long getIdTipo() {
-        return idTipo;
+    private long precio_semana;
+    private long capacidad_sitio;
+    private long id_tipo_vechiculo;
+    public long getId_tipo_vechiculo() {
+        return id_tipo_vechiculo;
+    }
+    public void setId_tipo_vechiculo(long id_tipo_vechiculo) {
+        this.id_tipo_vechiculo = id_tipo_vechiculo;
     }
 
-    public void setIdTipo(long idTipo) {
-        this.idTipo = idTipo;
+    public long getId_vehiculo() {
+        return id_vehiculo;
+    }
+    public void setId_vehiculo(long id_vehiculo) {
+        this.id_vehiculo = id_vehiculo;
     }
 
-    public long getIdVehiculo() {
-        return idVehiculo;
+    public String getNombre_modelo() {
+        return nombre_modelo;
     }
 
-
-    public void setIdVehiculo(long idVehiculo) {
-        this.idVehiculo = idVehiculo;
-    }
-
-    public String getNombreModelo() {
-        return nombreModelo;
-    }
-
-    public void setNombreModelo(String nombreModelo) {
-        this.nombreModelo = nombreModelo;
+    public void setNombre_modelo(String nombre_modelo) {
+        this.nombre_modelo = nombre_modelo;
     }
 
     public String getMatricula() {
@@ -52,19 +45,19 @@ public class Vehiculo {
         this.marca = marca;
     }
 
-    public long getPrecioSemana() {
-        return precioSemana;
+    public long getPrecio_semana() {
+        return precio_semana;
     }
 
-    public void setPrecioSemana(long precioSemana) {
-        this.precioSemana = precioSemana;
+    public void setPrecio_semana(long precio_semana) {
+        this.precio_semana = precio_semana;
     }
 
-    public long getCapacidadSitio() {
-        return capacidadSitio;
+    public long getCapacidad_sitio() {
+        return capacidad_sitio;
     }
 
-    public void setCapacidadSitio(long capacidadSitio) {
-        this.capacidadSitio = capacidadSitio;
+    public void setCapacidad_sitio(long capacidad_sitio) {
+        this.capacidad_sitio = capacidad_sitio;
     }
 }

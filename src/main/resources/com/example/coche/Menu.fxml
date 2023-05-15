@@ -6,23 +6,23 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coche.MenuController">
    <children>
-      <SplitMenuButton layoutX="153.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Filtro Marcas">
+       <SplitMenuButton fx:id="brandFilter" layoutX="153.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Filtro Marcas">
         <items>
-          <MenuItem mnemonicParsing="false" text="Audi" />
-            <MenuItem mnemonicParsing="false" text="Jaguar" />
-            <MenuItem mnemonicParsing="false" text="Opel" />
-            <MenuItem mnemonicParsing="false" text="Toyota" />
-            <MenuItem mnemonicParsing="false" text="Tesla" />
-          <MenuItem mnemonicParsing="false" text="Ferrari" />
+            <MenuItem onAction="#selectBrand" mnemonicParsing="false" text="Audi" />
+            <MenuItem onAction="#selectBrand" mnemonicParsing="false" text="Jaguar" />
+            <MenuItem onAction="#selectBrand" mnemonicParsing="false" text="Opel" />
+            <MenuItem onAction="#selectBrand" mnemonicParsing="false" text="Toyota" />
+            <MenuItem onAction="#selectBrand" mnemonicParsing="false" text="Tesla" />
+            <MenuItem onAction="#selectBrand" mnemonicParsing="false" text="Ferrari" />
         </items>
       </SplitMenuButton>
-      <TableView layoutX="11.0" layoutY="49.0" prefHeight="303.0" prefWidth="579.0">
+       <TableView fx:id="carTable" layoutX="11.0" layoutY="49.0" prefHeight="303.0" prefWidth="579.0">
         <columns>
-          <TableColumn prefWidth="109.0" text="Modelo" />
-            <TableColumn prefWidth="79.0" text="Marca" />
-          <TableColumn prefWidth="117.0" text="Matricula" />
-            <TableColumn prefWidth="118.0" text="Capacidad Maxima" />
-            <TableColumn prefWidth="145.0" text="Precio Semanal" />
+                    <TableColumn fx:id="modeloColumn" prefWidth="109.0" text="Modelo" />
+                    <TableColumn fx:id="marcaColumn" prefWidth="79.0" text="Marca" />
+                    <TableColumn fx:id="matriculaColumn" prefWidth="117.0" text="Matricula" />
+                    <TableColumn fx:id="capacidadColumn" prefWidth="118.0" text="Capacidad Maxima" />
+                    <TableColumn fx:id="precioColumn" prefWidth="145.0" text="Precio Semanal" />
         </columns>
       </TableView>
       <Button fx:id="btnRentar" layoutX="440.0" layoutY="361.0" mnemonicParsing="false" onAction="#Renta" text="Rentar" />
@@ -31,6 +31,5 @@
             <Font name="System Bold" size="13.0" />
          </font></Button>
       <Label fx:id="txtCorreo" layoutX="355.0" layoutY="19.0" prefHeight="17.0" prefWidth="67.0" text="Label" />
-      <Button layoutX="69.0" layoutY="361.0" mnemonicParsing="false" onAction="#Volver" text="Volver" />
    </children>
 </Pane>
