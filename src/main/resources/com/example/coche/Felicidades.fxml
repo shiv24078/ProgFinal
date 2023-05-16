@@ -21,7 +21,7 @@
       <AmbientLight color="CHARTREUSE" layoutX="420.0" layoutY="152.0" lightOn="true" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="220.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/wallpaper.jpg" />
+            <Image url="@image/robber1.png" />
          </image></ImageView>
       <Label fx:id="txtCorreo" layoutX="292.0" layoutY="208.0" text="Cliente" />
       <Button layoutX="214.0" layoutY="349.0" mnemonicParsing="false" onAction="#Salir" prefHeight="25.0" prefWidth="229.0" text="Salir de la aplicacion al terminar pago" textFill="#e80000">

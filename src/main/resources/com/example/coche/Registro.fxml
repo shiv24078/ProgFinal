@@ -3,26 +3,61 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coche.RegistroController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import java.lang.String?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coche.RegistroController" stylesheets="@Registro.css">
    <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0">
+         <Image url="@image/registercar2.jpg" />
+      </ImageView>
       <VBox layoutX="18.0" layoutY="22.0" spacing="10">
          <Label fx:id="txtCorreo" layoutX="79.0" layoutY="14.0" text="Correo a registrar">
             <font>
                <Font size="15.0" />
             </font>
+            <styleClass>
+               <String fx:value="form-label"/>
+            </styleClass>
          </Label>
-         <TextField fx:id="correoField" />
+         <TextField fx:id="correoField">
+            <styleClass>
+               <String fx:value="form-input"/>
+            </styleClass>
+         </TextField>
          <Label text="Contraseña a registrar">
             <font>
                <Font size="15.0" />
             </font>
+            <styleClass>
+               <String fx:value="form-label"/>
+            </styleClass>
          </Label>
-         <PasswordField fx:id="passwordField" />
+         <PasswordField fx:id="passwordField">
+            <styleClass>
+               <String fx:value="form-input"/>
+            </styleClass>
+         </PasswordField>
          <HBox spacing="15">
-            <Button mnemonicParsing="false" onAction="#registerNewClient" text="Registrar Datos" />
+            <Button mnemonicParsing="false" onAction="#registerNewClient" text="Registrar Datos">
+               <styleClass>
+                  <String fx:value="form-button"/>
+               </styleClass>
+            </Button>
          </HBox>
-         <Label fx:id="errorLabel" text="" textFill="RED" />
-         <Label fx:id="confirmationLabel" text="" textFill="GREEN" />
+         <Label fx:id="errorLabel" text="" textFill="RED">
+            <styleClass>
+               <String fx:value="form-error"/>
+            </styleClass>
+         </Label>
+         <Label fx:id="confirmationLabel" text="" textFill="GREEN">
+            <styleClass>
+               <String fx:value="form-confirmation"/>
+            </styleClass>
+         </Label>
       </VBox>
    </children>
 </Pane>
+
+
+

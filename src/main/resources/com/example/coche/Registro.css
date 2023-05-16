@@ -1,0 +1,42 @@
+/* Registro.css */
+
+.form-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F2F2F2; /* Light grey color for the label text */
+}
+
+.form-input {
+    -fx-background-color: #FFFFFF; /* White background for the input fields */
+    -fx-border-color: #B3B3B3; /* Grey color for the border */
+    -fx-border-width: 0 0 2 0;
+    -fx-text-fill: #000000; /* Black color for the input text */
+}
+
+.form-input:focused {
+    -fx-border-color: #007BFF; /* Blue border when input is focused */
+}
+
+.form-button {
+    -fx-background-color: #007BFF; /* Blue background for the button */
+    -fx-text-fill: #FFFFFF; /* White text color for the button */
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.form-button:hover {
+    -fx-background-color: #0056b3; /* Darker blue color when the button is hovered */
+}
+
+.form-confirmation {
+    -fx-text-fill: #008000; /* Green color for confirmation messages */
+    -fx-font-size: 12px;
+}
+
+.form-error {
+    -fx-text-fill: #ff0000; /* Red color for error messages */
+    -fx-font-size: 16px;
+    -fx-background-color: #F2F2F2; /* Light grey color for the background of error messages */
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+}

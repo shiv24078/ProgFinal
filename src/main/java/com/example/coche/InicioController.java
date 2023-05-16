@@ -20,6 +20,8 @@ public class InicioController {
     @FXML
     private Label errorLabel;
     private DatabaseHelper databaseHelper = new DatabaseHelper();
+    private UserData userData = new UserData();  // Create a UserData instance
+
 
 
     // Método para ir a registro
@@ -44,6 +46,7 @@ public class InicioController {
         stage.show();
     }
 
+
     // Método para ir a ZonaAlquiler
     @FXML
     void Menu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
@@ -52,18 +55,23 @@ public class InicioController {
 
         if (databaseHelper.checkLogin(correo, password)) {
             // Login successful, navigate to the next page
+            userData.setUserEmail(correo);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ZonaAlquiler.fxml"));
             Parent root = loader.load();
             ZonaAlquilerController controller = loader.getController();
+            // Get the current Stage
+            Stage currentStage = (Stage) txtCorreo.getScene().getWindow();
+            controller.init(userData, currentStage);  // Pass the current Stage
             Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+            currentStage.setScene(scene);
+            currentStage.show();
         } else {
             // Login failed, show error message
             errorLabel.setText("Error: verifique sus credenciales.");
         }
     }
+
 
 
     // Método para cerrar la aplicación

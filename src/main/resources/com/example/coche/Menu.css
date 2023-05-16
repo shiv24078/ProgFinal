@@ -1,0 +1,49 @@
+/* Style for MenuButton */
+.split-menu-button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+}
+
+.split-menu-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Style for TableView */
+.table-view {
+    -fx-background-color: #f0f0f0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-column {
+    -fx-background-color: #f1f1f1;
+}
+
+/* Style for Buttons */
+.button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Style for Exit Button */
+#btnSalir {
+    -fx-background-color: #f44336; /* Red */
+    -fx-text-fill: white;
+}
+
+#btnSalir:hover {
+    -fx-background-color: #d60000; /* Darker red */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #ADD8E6;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: #C71585;
+}
+
+

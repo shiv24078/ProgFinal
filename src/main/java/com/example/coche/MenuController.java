@@ -9,13 +9,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class MenuController {
     private InicioController controllerinicio;
     private RegistroController controllerregis;
     private Stage stage;
+    private UserData userData;
+
     @FXML
     private Label txtCorreo;
     @FXML
@@ -43,15 +48,16 @@ public class MenuController {
         originalCarList = FXCollections.observableArrayList(db.getAllCars()); // Save the original car list
         carTable.setItems(originalCarList); // Set the original list to populate the table
     }
-    public void initialize() throws SQLException, ClassNotFoundException {
+    public void initialize(UserData userData, Stage stage) throws SQLException, ClassNotFoundException {
+        this.userData = userData; // Add this line
         populateTable();
         modeloColumn.setCellValueFactory(new PropertyValueFactory<>("nombre_modelo"));
         matriculaColumn.setCellValueFactory(new PropertyValueFactory<>("matricula"));
         marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
         capacidadColumn.setCellValueFactory(new PropertyValueFactory<>("capacidad_sitio"));
         precioColumn.setCellValueFactory(new PropertyValueFactory<>("precio_semana"));
-
     }
+
     @FXML
     void selectBrand(ActionEvent event) {
         // Get the selected brand
@@ -85,6 +91,9 @@ public class MenuController {
             return;
         }
 
+        // Save the selected vehicle's model
+        String selectedModel = selectedVehicle.getNombre_modelo();
+        userData.setCarModel(selectedModel);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Compra.fxml"));
         Parent root = loader.load();
         CompraController controller = loader.getController();
@@ -93,6 +102,18 @@ public class MenuController {
         stage.setScene(scene);
         controller.init(txtCorreo.getText(), stage, this, selectedVehicle); // Pass the selected vehicle to the init() method
         stage.show();
+
+        // Save the selected model to UserData
+
+
+        String fileName = "historia_de_compra.txt";
+        try (PrintWriter out = new PrintWriter(new FileWriter(fileName, true))) { // FileWriter is opened in append mode
+            String userEmail = userData.getUserEmail();
+            String userProvincia = userData.getProvincia();
+            out.println(userEmail + " desde " + userProvincia + " ha comprado un " + selectedModel);
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 
     public void init(Stage stage) {

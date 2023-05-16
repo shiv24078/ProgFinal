@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ZonaAlquilerController {
     private Stage stage;
-    private MenuController menuController;
+    private UserData userData;
 
     @FXML
     private VBox provinciaButtonsVBox;
@@ -26,7 +26,9 @@ public class ZonaAlquilerController {
     @FXML
     private Button goToMenuButton;
 
-    public void initialize() throws SQLException, ClassNotFoundException {
+    public void init(UserData userData, Stage primaryStage) throws SQLException, ClassNotFoundException {
+        this.userData = userData;
+        this.stage = primaryStage;
         DatabaseHelper db = new DatabaseHelper();
         List<String> provincias = db.getAllProvincias();
         populateProvincias(provincias);
@@ -51,6 +53,7 @@ public class ZonaAlquilerController {
 
     @FXML
     private void provinciaSelected(String selectedProvincia) {
+        userData.setProvincia(selectedProvincia);
         goToMenu();
     }
 
@@ -60,13 +63,16 @@ public class ZonaAlquilerController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
             Parent root = loader.load();
             MenuController menuController = loader.getController();
-            menuController.init(stage);
+            menuController.initialize(userData, stage);  // Pass userData and stage to MenuController
             Scene scene = new Scene(root);
-            Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 }

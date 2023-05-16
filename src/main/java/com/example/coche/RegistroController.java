@@ -34,15 +34,20 @@ public class RegistroController {
             DatabaseHelper db = new DatabaseHelper();
             if (correo.isEmpty() || password.isEmpty()) {
                 errorLabel.setText("Correo y contraseña son requeridos");
+                errorLabel.setVisible(true);
+                errorLabel.setManaged(true);
                 return;
             }
             if (db.checkIfEmailExists(correo)) {
                 errorLabel.setText("Este correo ya está registrado");
+                errorLabel.setVisible(true);
+                errorLabel.setManaged(true);
                 return;
             }
             Cliente newClient = new Cliente(correo, password);
             db.addClient(newClient);
-            errorLabel.setText("");
+            errorLabel.setVisible(false);
+            errorLabel.setManaged(false);
             confirmationLabel.setText("Registro exitoso");
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("An error occurred while registering a new client.");

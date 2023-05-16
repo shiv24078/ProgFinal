@@ -29,9 +29,7 @@ public class CompraController {
     @FXML
     private TextField capacidadTextField;
     @FXML
-    private TableView<Vehiculo> carTable;
-    @FXML
-    private TableColumn<Vehiculo, Long> precioSemanaColumn;
+    private Label precioSemanaLabel;
 
     public void init(String text, Stage stage, MenuController menuController, Vehiculo selectedVehicle) {
         txtCorreo.setText(text);
@@ -43,11 +41,7 @@ public class CompraController {
         marcaTextField.setText(selectedVehicle.getMarca());
         matriculaTextField.setText(selectedVehicle.getMatricula());
         capacidadTextField.setText(String.valueOf(selectedVehicle.getCapacidad_sitio()));
-
-        // Populate the TableView with the prices of the selected vehicle
-        precioSemanaColumn.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getPrecio_semana()).asObject());
-
-        carTable.getItems().add(selectedVehicle);
+        precioSemanaLabel.setText(String.valueOf(selectedVehicle.getPrecio_semana()));
     }
 
     @FXML
@@ -65,7 +59,6 @@ public class CompraController {
             e.printStackTrace();
         }
     }
-
-
 }
+
 
