@@ -39,14 +39,7 @@ public class DatabaseHelper {
                 ")";
         String createReservaTableSQL = "CREATE TABLE IF NOT EXISTS reserva (" +
                 "id_reserva BIGINT AUTO_INCREMENT PRIMARY KEY," +
-                "id_cliente BIGINT NOT NULL," +
-                "id_vehiculo BIGINT NOT NULL," +
-                "id_zona_alquiler BIGINT NOT NULL," +
-                "fecha_inicio DATE NOT NULL," +
-                "fecha_fin DATE NOT NULL," +
-                "FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)," +
-                "FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo)," +
-                "FOREIGN KEY (id_zona_alquiler) REFERENCES zona_alquiler(id_zona_alquiler)" +
+                "reserva_text VARCHAR(255)" +
                 ")";
         try (Connection connection = connect();
              Statement statement = connection.createStatement()) {
@@ -120,18 +113,18 @@ public class DatabaseHelper {
             System.out.println("Una zona de alquiler con esta dirección ya existe en la base de datos.");
         }
     }
-    public void insertReserva() throws SQLException, ClassNotFoundException {
-        String insertReservaTableSQL = "INSERT INTO reserva (id_cliente, id_vehiculo, id_zona_alquiler, fecha_inicio, fecha_fin) " +
-                "VALUES (1, 1, 1, '2023-05-20', '2023-05-27'), " +
-                "(2, 2, 2, '2023-06-01', '2023-06-08');";
+    public void insertReserva(String reservaText) throws SQLException, ClassNotFoundException {
+        Connection connection = connect();
 
-        try (Connection connection = connect();
-             Statement statement = connection.createStatement()) {
-            statement.execute(insertReservaTableSQL);
+        String sql = "INSERT INTO reserva (reserva_text) VALUES (?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, reservaText);
+            pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Una reserva con estos datos ya existe en la base de datos.");
+            System.out.println(e.getMessage());
         }
     }
+
     public boolean checkIfEmailExists(String correo) throws SQLException, ClassNotFoundException {
         String query = "SELECT COUNT(*) FROM Cliente WHERE correo = ?";
         Connection dbConnection = connect();

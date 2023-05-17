@@ -13,7 +13,6 @@ public class ConnectionTest {
             dbHelper.createTables();
             dbHelper.insertInfo();
             dbHelper.insertZonaAlquiler();
-            dbHelper.insertReserva();
 
             System.out.println("Tabla creada");
         } catch (Exception e) {

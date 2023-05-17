@@ -107,9 +107,17 @@ public class MenuController {
         try (PrintWriter out = new PrintWriter(new FileWriter(fileName, true))) { // FileWriter is opened in append mode
             String userEmail = userData.getUserEmail();
             String userProvincia = userData.getProvincia();
-            out.println(userEmail + " desde " + userProvincia + " ha comprado un " + selectedModel);
+            String reservaText = userEmail + " desde " + userProvincia + " ha comprado un " + selectedModel;
+            out.println(reservaText);
+
+            DatabaseHelper db = new DatabaseHelper(); // Assuming DatabaseHelper is your database utility class
+            db.insertReserva(reservaText);
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
