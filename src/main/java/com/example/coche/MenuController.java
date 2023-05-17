@@ -84,14 +84,12 @@ public class MenuController {
     //Metodo para ir a rentar coche
     @FXML
     void Renta(ActionEvent event) throws IOException {
-        // Get the selected vehicle
         Vehiculo selectedVehicle = carTable.getSelectionModel().getSelectedItem();
         if (selectedVehicle == null) {
-            // No vehicle is selected, handle the error
+            // error si no selciona ninguna error
             return;
         }
 
-        // Save the selected vehicle's model
         String selectedModel = selectedVehicle.getNombre_modelo();
         userData.setCarModel(selectedModel);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Compra.fxml"));
@@ -103,7 +101,6 @@ public class MenuController {
         controller.init(txtCorreo.getText(), stage, this, selectedVehicle); // Pass the selected vehicle to the init() method
         stage.show();
 
-        // Save the selected model to UserData
 
 
         String fileName = "historia_de_compra.txt";
@@ -117,9 +114,7 @@ public class MenuController {
     }
 
     public void init(Stage stage) {
-        // You can access the selected zone's properties here
         this.stage = stage;
-        // Initialize the rest of the MenuController as needed
     }
 
 }

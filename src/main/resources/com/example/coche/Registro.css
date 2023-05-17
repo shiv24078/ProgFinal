@@ -7,7 +7,7 @@
 }
 
 .form-input {
-    -fx-background-color: #FFFFFF; /* White background for the input fields */
+ /* White background for the input fields */
     -fx-border-color: #B3B3B3; /* Grey color for the border */
     -fx-border-width: 0 0 2 0;
     -fx-text-fill: #000000; /* Black color for the input text */

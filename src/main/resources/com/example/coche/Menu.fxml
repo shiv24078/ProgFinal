@@ -22,10 +22,10 @@
                 <TableColumn fx:id="marcaColumn" prefWidth="79.0" text="Marca" />
                 <TableColumn fx:id="matriculaColumn" prefWidth="117.0" text="Matricula" />
                 <TableColumn fx:id="capacidadColumn" prefWidth="118.0" text="Capacidad Maxima" />
-                <TableColumn fx:id="precioColumn" prefWidth="145.0" text="Precio Semanal" />
+                <TableColumn fx:id="precioColumn" prefWidth="145.0" text="Precio" />
             </columns>
         </TableView>
-        <Button fx:id="btnRentar" layoutX="440.0" layoutY="361.0" mnemonicParsing="false" onAction="#Renta" text="Rentar" />
+        <Button fx:id="btnRentar" layoutX="440.0" layoutY="361.0" mnemonicParsing="false" onAction="#Renta" text="Comprar" />
         <Button fx:id="btnSalir" layoutX="562.0" layoutY="14.0" mnemonicParsing="false" onAction="#Salir" text="X" textFill="RED">
             <font>
                 <Font name="System Bold" size="13.0" />
